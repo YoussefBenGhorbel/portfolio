@@ -10,8 +10,4 @@ This is my personal portfolio showcasing my skills, education, and flagship proj
 ## 🚀 Deployment
 This site is automatically deployed with **GitHub Pages**.
 
-### To deploy:
-1. Fork or clone this repo:
-   ```bash
-   git clone https://github.com/YOUR_USERNAME/portfolio.git
-   cd portfolio
+
