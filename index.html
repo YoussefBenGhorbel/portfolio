@@ -3,164 +3,497 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio – Youssef Ben Ghorbel</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+  <title>Youssef Ben Ghorbel | DevOps & Cloud Administrator</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="httpshttps://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
+    :root {
+      --primary: #0a192f;
+      --secondary: #112240;
+      --accent: #64ffda;
+      --text-primary: #ccd6f6;
+      --text-secondary: #8892b0;
+      --card-bg: #112240;
+      --glow: 0 0 15px rgba(100, 255, 218, 0.5);
+    }
+    
+    * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+    
     body {
-      font-family: 'Roboto', sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f7f9fc;
-      color: #333;
+      font-family: 'Montserrat', sans-serif;
+      background: var(--primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
     }
+    
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+    
+    /* Header & Navigation */
     header {
-      background: #0d47a1;
-      color: white;
-      padding: 2rem;
-      text-align: center;
+      background: rgba(10, 25, 47, 0.85);
+      backdrop-filter: blur(10px);
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+      padding: 15px 0;
+      border-bottom: 1px solid rgba(100, 255, 218, 0.1);
+      transition: top 0.3s ease;
     }
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
+    
+    nav { display: flex; justify-content: space-between; align-items: center; }
+    
+    .logo { font-family: 'JetBrains Mono', monospace; font-size: 1.4rem; color: var(--accent); text-decoration: none; }
+    
+    .nav-right { display: flex; align-items: center; gap: 30px; }
+
+    .nav-links { display: flex; gap: 25px; }
+    
+    .nav-links a {
+        color: var(--text-primary); text-decoration: none; font-size: 0.9rem;
+        transition: color 0.3s; font-family: 'JetBrains Mono', monospace;
     }
-    header p {
-      margin: 0.5rem 0 0;
-      font-size: 1.2rem;
+    
+    .nav-links a:hover { color: var(--accent); }
+    
+    /* Language Switcher */
+    .lang-switcher { display: flex; }
+    
+    .lang-switcher button {
+      background: none; border: 1px solid var(--text-secondary); color: var(--text-secondary);
+      font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; padding: 4px 10px;
+      cursor: pointer; transition: all 0.3s;
     }
-    section {
-      max-width: 900px;
-      margin: auto;
-      padding: 2rem;
-      background: white;
-      margin-bottom: 1.5rem;
-      border-radius: 10px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    
+    .lang-switcher button:first-child { border-radius: 4px 0 0 4px; border-right: 0.5px solid var(--text-secondary); }
+    .lang-switcher button:last-child { border-radius: 0 4px 4px 0; border-left: 0.5px solid var(--text-secondary); }
+    
+    .lang-switcher button:hover { color: var(--accent); border-color: var(--accent); }
+    
+    .lang-switcher button.active {
+      color: var(--primary); background-color: var(--accent); border-color: var(--accent);
     }
-    h2 {
-      color: #0d47a1;
-      border-bottom: 2px solid #0d47a1;
-      padding-bottom: 0.3rem;
+
+    /* Mobile Nav Toggle */
+    .mobile-nav-toggle { display: none; background: none; border: none; font-size: 1.5rem; color: var(--accent); cursor: pointer; z-index: 1001; }
+
+    /* Hero Section */
+    .hero { min-height: 100vh; display: flex; align-items: center; padding: 80px 0 40px; }
+    
+    .hero-content { max-width: 800px; }
+    
+    .hero h1 { font-size: clamp(40px, 8vw, 70px); margin-bottom: 20px; color: var(--text-primary); }
+    
+    .hero h2 { font-size: clamp(28px, 5vw, 40px); margin-bottom: 20px; color: var(--accent); font-family: 'JetBrains Mono', monospace; }
+    
+    .hero p { font-size: 1.1rem; max-width: 540px; margin-bottom: 30px; color: var(--text-secondary); }
+    
+    .btn {
+      display: inline-block; padding: 12px 28px; background: transparent; color: var(--accent);
+      border: 1px solid var(--accent); border-radius: 4px; text-decoration: none;
+      font-family: 'JetBrains Mono', monospace; font-size: 0.9rem;
+      transition: all 0.3s ease; cursor: pointer;
     }
-    ul {
-      padding-left: 20px;
+    
+    .btn:hover { background: rgba(100, 255, 218, 0.1); }
+    
+    /* General Section Styles */
+    section { padding: 100px 0; }
+    
+    .section-title {
+      font-family: 'JetBrains Mono', monospace; font-size: clamp(26px, 5vw, 32px); margin-bottom: 50px;
+      color: var(--text-primary); position: relative; display: inline-block;
     }
-    .contact {
-      text-align: center;
-      padding: 2rem;
-      background: #0d47a1;
-      color: white;
+    
+    .section-title::after {
+      content: ''; position: absolute; bottom: -10px; left: 0; width: 70px;
+      height: 3px; background: var(--accent);
     }
-    .contact a {
-      color: #ffeb3b;
-      text-decoration: none;
-      font-weight: bold;
+    
+    /* Project Card Styles */
+    .projects-container { display: grid; grid-template-columns: 1fr; gap: 50px; }
+    
+    .project-card {
+      background: var(--card-bg); border-radius: 10px; padding: 2rem; border: 1px solid rgba(100, 255, 218, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
     }
-    .skills span {
-      display: inline-block;
-      background: #e3f2fd;
-      color: #0d47a1;
-      margin: 5px;
-      padding: 5px 10px;
-      border-radius: 5px;
-      font-size: 0.9rem;
+    
+    .project-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px -15px rgba(2,12,27,.7); }
+    
+    .project-header { margin-bottom: 20px; }
+    
+    .project-title { font-family: 'JetBrains Mono', monospace; color: var(--accent); margin-bottom: 10px; font-size: 1.4rem; }
+    
+    .project-meta { color: var(--text-secondary); font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; }
+    
+    .project-body { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+    
+    .project-desc { color: var(--text-secondary); margin-bottom: 20px; grid-column: 1 / -1; }
+    
+    .project-details-column h4 { color: var(--text-primary); font-family: 'JetBrains Mono', monospace; margin-bottom: 10px; }
+    
+    .project-list { list-style: none; color: var(--text-secondary); font-size: 0.9rem; }
+    
+    .project-list li { margin-bottom: 8px; position: relative; padding-left: 20px; }
+    
+    .project-list li::before { content: '▹'; position: absolute; left: 0; color: var(--accent); }
+    
+    .project-footer { grid-column: 1 / -1; margin-top: 20px; }
+    
+    .tech-stack { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; }
+    
+    .tech-tag {
+      background: rgba(100, 255, 218, 0.1); color: var(--accent); padding: 5px 10px;
+      border-radius: 20px; font-size: 0.8rem; font-family: 'JetBrains Mono', monospace;
+    }
+    
+    /* Contact Section */
+    .contact-container { max-width: 600px; margin: 0 auto; text-align: center; }
+    
+    .contact-container p { color: var(--text-secondary); margin-bottom: 30px; }
+
+    .social-links { display: flex; gap: 25px; justify-content: center; margin-top: 30px; }
+    
+    .social-links a { color: var(--text-secondary); font-size: 1.5rem; transition: color 0.3s, transform 0.3s; }
+    
+    .social-links a:hover { color: var(--accent); transform: translateY(-3px); }
+    
+    footer { padding: 30px 0; text-align: center; color: var(--text-secondary); font-size: 0.8rem; font-family: 'JetBrains Mono', monospace; }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .nav-links, .lang-switcher { display: none; }
+        .nav-right.active .nav-links, .nav-right.active .lang-switcher {
+            display: flex;
+            position: fixed;
+            top: 70px; right: 0;
+            width: 70%; max-width: 280px; height: 100vh;
+            background: var(--secondary);
+            flex-direction: column;
+            padding: 40px;
+            align-items: center;
+            gap: 40px;
+        }
+        .nav-right.active .lang-switcher {
+            position: absolute;
+            bottom: 100px;
+        }
+        .mobile-nav-toggle { display: block; }
     }
   </style>
 </head>
 <body>
 
   <header>
-    <h1>Youssef Ben Ghorbel</h1>
-    <p>Network & Systems Administrator | Cloud & DevOps Enthusiast</p>
+    <div class="container">
+      <nav>
+        <a href="#" class="logo">ybg.dev</a>
+        <div class="nav-right">
+            <div class="nav-links">
+                <a href="#about" data-translate="navAbout">About</a>
+                <a href="#skills" data-translate="navSkills">Skills</a>
+                <a href="#projects" data-translate="navProjects">Projects</a>
+                <a href="#contact" data-translate="navContact">Contact</a>
+            </div>
+            <div class="lang-switcher">
+                <button id="lang-en-btn">EN</button>
+                <button id="lang-fr-btn">FR</button>
+            </div>
+        </div>
+        <button class="mobile-nav-toggle"><i class="fas fa-bars"></i></button>
+      </nav>
+    </div>
   </header>
 
-  <section>
-    <h2>About Me</h2>
-    <p>
-      I am a results-driven <strong>Network and Systems Administrator</strong> with strong foundations in 
-      <strong>cloud technologies and DevOps automation</strong>. 
-      Skilled in Infrastructure as Code (Terraform, Ansible), virtualization (Proxmox), and monitoring (Prometheus, Grafana).
-      I aim to build reliable, secure, and automated IT infrastructures.
-    </p>
-  </section>
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h2 data-translate="heroGreeting">Hello, my name is</h2>
+          <h1>Youssef Ben Ghorbel.</h1>
+          <h2 data-translate="heroTitle">DevOps & Cloud Administrator.</h2>
+          <p data-translate="heroIntro">I build and maintain automated, scalable, and resilient infrastructure. With hands-on experience in networking, containerization, and cloud technologies, I bridge the gap between development and operations to ensure seamless deployments and robust systems.</p>
+          <a href="#projects" class="btn" data-translate="heroButton">View My Work</a>
+        </div>
+      </div>
+    </section>
 
-  <section>
-    <h2>Technical Skills</h2>
-    <div class="skills">
-      <span>Terraform</span><span>Ansible</span><span>Proxmox VE</span>
-      <span>AWS (EC2, S3, VPC)</span><span>Linux (RHEL/Ubuntu)</span>
-      <span>Windows Server (AD, DNS, DHCP)</span><span>Cisco CCNA</span>
-      <span>Prometheus</span><span>Grafana</span><span>Alertmanager</span>
-      <span>Proxmox Backup Server</span>
+    <section id="projects">
+      <div class="container">
+        <h2 class="section-title" data-translate="projectsTitle">Projects</h2>
+        <div class="projects-container">
+            
+            <div class="project-card">
+              <div class="project-header">
+                <h3 class="project-title" data-translate="iaasTitle">IaaS Automation Platform with Proxmox & Odoo</h3>
+                <div class="project-meta" data-translate="iaasMeta">Final Year Project | MAG Security</div>
+              </div>
+              <p class="project-desc" data-translate="iaasDesc">Developed a complete IaaS (Infrastructure as a Service) platform to fully automate the dynamic allocation of virtual resources. The solution integrates an Odoo ERP as the customer portal and orchestrator with a powerful Proxmox VE virtualization backend, creating a full "Infrastructure as Code" pipeline for seamless VM provisioning.</p>
+              <div class="project-body">
+                  <div class="project-details-column">
+                      <h4 data-translate="keyAchievements">Key Achievements</h4>
+                      <ul class="project-list" data-translate="iaasAchievements">
+                        <li>Automated the entire VM lifecycle from customer order in Odoo to deployment.</li>
+                        <li>Implemented a full Infrastructure as Code (IaC) workflow using Terraform and Ansible.</li>
+                        <li>Designed multi-tenant network isolation for enhanced client security.</li>
+                        <li>Deployed a monitoring stack (Prometheus, Grafana) for real-time infrastructure visibility.</li>
+                        <li>Established a robust, automated backup and recovery strategy with Proxmox Backup Server.</li>
+                      </ul>
+                  </div>
+                  <div class="project-details-column">
+                      <h4 data-translate="coreConcepts">Core Concepts</h4>
+                      <ul class="project-list" data-translate="iaasConcepts">
+                        <li>IT Orchestration & Automation</li>
+                        <li>Virtualization & Hypervisors</li>
+                        <li>Infrastructure as Code (IaC)</li>
+                        <li>Network Automation & Security</li>
+                        <li>System Monitoring & Alerting</li>
+                      </ul>
+                  </div>
+              </div>
+              <div class="project-footer">
+                <div class="tech-stack">
+                  <span class="tech-tag">Proxmox VE</span><span class="tech-tag">Odoo</span><span class="tech-tag">Terraform</span><span class="tech-tag">Ansible</span><span class="tech-tag">Python</span><span class="tech-tag">Prometheus</span><span class="tech-tag">Grafana</span>
+                </div>
+                <!-- TODO: VERIFY THIS FILENAME -->
+                <!-- Make sure a PDF named 'Rapport-PFE-IaaS-Platform.pdf' exists in your repo -->
+                <a href="https://github.com/YoussefBenGhorbel/portfolio/blob/main/RSI2425-10_Taboubi%20Firas_Ben%20Ghorbel_Youssef.pdf" class="btn" target="_blank" data-translate="viewFullReport">View Full Report</a>
+              </div>
+            </div>
+
+            <div class="project-card">
+              <div class="project-header">
+                <h3 class="project-title" data-translate="networkTitle">Enterprise Network Infrastructure Design & Implementation</h3>
+                <div class="project-meta" data-translate="networkMeta">Academic Integration Project</div>
+              </div>
+              <p class="project-desc" data-translate="networkDesc">Designed, configured, and simulated a complete and secure network infrastructure for a fictional two-site enterprise. This project showcases end-to-end network engineering skills from planning and IP addressing to security policy implementation and high-availability configuration using Huawei equipment.</p>
+              <div class="project-body">
+                  <div class="project-details-column">
+                        <h4 data-translate="keyFeatures">Key Features</h4>
+                        <ul class="project-list" data-translate="networkFeatures">
+                            <li>Hierarchical multi-site network topology.</li>
+                            <li>VLANs for traffic segmentation and security.</li>
+                            <li>Huawei firewalls with DMZ, Trust, and Untrust zones.</li>
+                            <li>High availability with VRRP & HRP for failover.</li>
+                            <li>Centralized Wi-Fi management using CAPWAP.</li>
+                        </ul>
+                  </div>
+                  <div class="project-details-column">
+                      <h4 data-translate="techUsed">Technologies Used</h4>
+                      <ul class="project-list" data-translate="networkTech">
+                          <li>Huawei Enterprise Switches & Routers</li>
+                          <li>Huawei USG Firewalls</li>
+                          <li>Huawei eNSP Simulator</li>
+                          <li>SSL VPN for Secure Remote Access</li>
+                          <li>Link Aggregation (Eth-Trunk/LACP)</li>
+                          <li>Static/Dynamic Routing, NAT, ACLs</li>
+                      </ul>
+                  </div>
+              </div>
+              <div class="project-footer">
+                <div class="tech-stack">
+                  <span class="tech-tag">Huawei</span><span class="tech-tag">eNSP</span><span class="tech-tag">Networking</span><span class="tech-tag">VLAN</span><span class="tech-tag">VRRP</span><span class="tech-tag">Security</span>
+                </div>
+                <!-- This link uses the exact encoded filename you provided. It should work correctly. -->
+                <a href="https://github.com/YoussefBenGhorbel/portfolio/blob/main/Projet%20d'int%C3%A9gration.pdf" target="_blank" class="btn" data-translate="viewProjectReport">View Project Report</a>
+              </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title" data-translate="k8sTitle">Hands-On Kubernetes Lab Series</h3>
+                    <div class="project-meta" data-translate="k8sMeta">Academic & Personal Lab Work</div>
+                </div>
+                <p class="project-desc" data-translate="k8sDesc">A series of practical labs focused on building foundational Kubernetes skills. This work demonstrates the ability to manage the entire lifecycle of a containerized application, from local cluster setup to application deployment, networking, and data persistence.</p>
+                <div class="project-body">
+                    <div class="project-details-column">
+                        <h4 data-translate="labsCovered">Labs Covered</h4>
+                        <ul class="project-list" data-translate="k8sLabs">
+                            <li>K3d Cluster Installation & Management</li>
+                            <li>Pods, Deployments & Scaling</li>
+                            <li>Service Exposure (ClusterIP, NodePort)</li>
+                            <li>Ingress for L7 Routing</li>
+                            <li>Persistent Data with Volumes</li>
+                        </ul>
+                    </div>
+                     <div class="project-details-column">
+                        <h4 data-translate="techUsed">Technologies Used</h4>
+                        <ul class="project-list">
+                            <li>Kubernetes (K8s)</li><li>K3d / K3s</li><li>Docker</li>
+                            <li>kubectl</li><li>YAML</li><li>Nginx Ingress</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="project-footer">
+                    <div class="tech-stack">
+                      <span class="tech-tag">Kubernetes</span><span class="tech-tag">Docker</span><span class="tech-tag">K3d</span><span class="tech-tag">Containerization</span>
+                    </div>
+                    <!-- TODO: VERIFY THIS FILENAME -->
+                    <!-- Combine your K8s lab reports into one PDF and name it 'Rapports-Labs-Kubernetes.pdf' or update the link -->
+                    <a href="https://github.com/YoussefBenGhorbel/portfolio/blob/main/Compte%20Rendu_Lab%201.pdf" target="_blank" class="btn" data-translate="viewLabReports">View Lab Reports</a>
+                </div>
+            </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" style="background-color: var(--secondary);">
+      <div class="container">
+          <div class="contact-container">
+            <h2 class="section-title" style="margin: 0 auto 50px auto;" data-translate="contactTitle">Get In Touch</h2>
+            <p data-translate="contactIntro">I'm currently seeking new opportunities and am open to collaboration. Whether you have a question or just want to connect, feel free to reach out. I'll do my best to get back to you!</p>
+            <a href="mailto:bgyoussef99@gmail.com" class="btn" data-translate="contactButton">Say Hello</a>
+
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/youssef-benghorbel" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <!-- TODO: Replace "#" with your GitHub profile URL -->
+                <a href="https://github.com/YoussefBenGhorbel" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            </div>
+          </div>
+      </div>
+    </section>
+  </main>
+  
+  <footer>
+    <div class="container">
+      <p data-translate="footerText">Designed & Built by Youssef Ben Ghorbel</p>
     </div>
-  </section>
+  </footer>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const translations = {
+            en: {
+                navAbout: "About",
+                navSkills: "Skills",
+                navProjects: "Projects",
+                navContact: "Contact",
+                heroGreeting: "Hello, my name is",
+                heroTitle: "DevOps & Cloud Administrator.",
+                heroIntro: "I build and maintain automated, scalable, and resilient infrastructure. With hands-on experience in networking, containerization, and cloud technologies, I bridge the gap between development and operations to ensure seamless deployments and robust systems.",
+                heroButton: "View My Work",
+                projectsTitle: "Projects",
+                iaasTitle: "IaaS Automation Platform with Proxmox & Odoo",
+                iaasMeta: "Final Year Project | MAG Security",
+                iaasDesc: 'Developed a complete IaaS (Infrastructure as a Service) platform to fully automate the dynamic allocation of virtual resources. The solution integrates an Odoo ERP as the customer portal and orchestrator with a powerful Proxmox VE virtualization backend, creating a full "Infrastructure as Code" pipeline for seamless VM provisioning.',
+                keyAchievements: "Key Achievements",
+                coreConcepts: "Core Concepts",
+                iaasAchievements: "<li>Automated the entire VM lifecycle from customer order in Odoo to deployment.</li><li>Implemented a full Infrastructure as Code (IaC) workflow using Terraform and Ansible.</li><li>Designed multi-tenant network isolation for enhanced client security.</li><li>Deployed a monitoring stack (Prometheus, Grafana) for real-time infrastructure visibility.</li><li>Established a robust, automated backup and recovery strategy with Proxmox Backup Server.</li>",
+                iaasConcepts: "<li>IT Orchestration & Automation</li><li>Virtualization & Hypervisors</li><li>Infrastructure as Code (IaC)</li><li>Network Automation & Security</li><li>System Monitoring & Alerting</li>",
+                viewFullReport: "View Full Report",
+                networkTitle: "Enterprise Network Infrastructure Design & Implementation",
+                networkMeta: "Academic Integration Project",
+                networkDesc: "Designed, configured, and simulated a complete and secure network infrastructure for a fictional two-site enterprise. This project showcases end-to-end network engineering skills from planning and IP addressing to security policy implementation and high-availability configuration using Huawei equipment.",
+                keyFeatures: "Key Features",
+                techUsed: "Technologies Used",
+                networkFeatures: "<li>Hierarchical multi-site network topology.</li><li>VLANs for traffic segmentation and security.</li><li>Huawei firewalls with DMZ, Trust, and Untrust zones.</li><li>High availability with VRRP & HRP for failover.</li><li>Centralized Wi-Fi management using CAPWAP.</li>",
+                networkTech: "<li>Huawei Enterprise Switches & Routers</li><li>Huawei USG Firewalls</li><li>Huawei eNSP Simulator</li><li>SSL VPN for Secure Remote Access</li><li>Link Aggregation (Eth-Trunk/LACP)</li><li>Static/Dynamic Routing, NAT, ACLs</li>",
+                viewProjectReport: "View Project Report",
+                k8sTitle: "Hands-On Kubernetes Lab Series",
+                k8sMeta: "Academic & Personal Lab Work",
+                k8sDesc: "A series of practical labs focused on building foundational Kubernetes skills. This work demonstrates the ability to manage the entire lifecycle of a containerized application, from local cluster setup to application deployment, networking, and data persistence.",
+                labsCovered: "Labs Covered",
+                k8sLabs: "<li>K3d Cluster Installation & Management</li><li>Pods, Deployments & Scaling</li><li>Service Exposure (ClusterIP, NodePort)</li><li>Ingress for L7 Routing</li><li>Persistent Data with Volumes</li>",
+                viewLabReports: "View Lab Reports",
+                contactTitle: "Get In Touch",
+                contactIntro: "I'm currently seeking new opportunities and am open to collaboration. Whether you have a question or just want to connect, feel free to reach out. I'll do my best to get back to you!",
+                contactButton: "Say Hello",
+                footerText: "Designed & Built by Youssef Ben Ghorbel",
+            },
+            fr: {
+                navAbout: "À Propos",
+                navSkills: "Compétences",
+                navProjects: "Projets",
+                navContact: "Contact",
+                heroGreeting: "Bonjour, je m'appelle",
+                heroTitle: "Administrateur DevOps & Cloud.",
+                heroIntro: "Je conçois et maintiens des infrastructures automatisées, évolutives et résilientes. Avec une expérience pratique en réseaux, conteneurisation et technologies cloud, je comble le fossé entre le développement et les opérations pour garantir des déploiements fluides et des systèmes robustes.",
+                heroButton: "Voir Mes Projets",
+                projectsTitle: "Projets",
+                iaasTitle: "Plateforme d'Automatisation IaaS avec Proxmox & Odoo",
+                iaasMeta: "Projet de Fin d'Études | MAG Security",
+                iaasDesc: "Développement d'une plateforme IaaS complète pour automatiser l'allocation dynamique de ressources virtuelles. La solution intègre l'ERP Odoo comme portail client et orchestrateur avec une puissante infrastructure de virtualisation Proxmox VE, créant un pipeline \"Infrastructure as Code\" complet pour un provisionnement de VM transparent.",
+                keyAchievements: "Réalisations Clés",
+                coreConcepts: "Concepts Clés",
+                iaasAchievements: "<li>Automatisation du cycle de vie complet des VM, de la commande client sur Odoo au déploiement.</li><li>Mise en place d'un flux Infrastructure as Code (IaC) complet avec Terraform et Ansible.</li><li>Conception de l'isolation réseau multi-locataire pour une sécurité client renforcée.</li><li>Déploiement d'une pile de monitoring (Prometheus, Grafana) pour une visibilité en temps réel de l'infrastructure.</li><li>Mise en place d'une stratégie de sauvegarde et de restauration robuste et automatisée avec Proxmox Backup Server.</li>",
+                iaasConcepts: "<li>Orchestration et Automatisation IT</li><li>Virtualisation & Hyperviseurs</li><li>Infrastructure as Code (IaC)</li><li>Automatisation Réseau & Sécurité</li><li>Supervision Système & Alerting</li>",
+                viewFullReport: "Voir le Rapport Complet",
+                networkTitle: "Conception et Implémentation d'Infrastructure Réseau d'Entreprise",
+                networkMeta: "Projet d'Intégration Académique",
+                networkDesc: "Conception, configuration et simulation d'une infrastructure réseau complète et sécurisée pour une entreprise fictive bi-site. Ce projet démontre des compétences complètes en ingénierie réseau, de la planification et de l'adressage IP à la mise en œuvre de politiques de sécurité et de configurations de haute disponibilité avec des équipements Huawei.",
+                keyFeatures: "Fonctionnalités Clés",
+                techUsed: "Technologies Utilisées",
+                networkFeatures: "<li>Topologie réseau hiérarchique et multi-sites.</li><li>VLANs pour la segmentation et la sécurité du trafic.</li><li>Pare-feux Huawei avec zones DMZ, Trust et Untrust.</li><li>Haute disponibilité avec VRRP & HRP pour le basculement.</li><li>Gestion centralisée du Wi-Fi via CAPWAP.</li>",
+                networkTech: "<li>Commutateurs & Routeurs d'entreprise Huawei</li><li>Pare-feux Huawei USG</li><li>Simulateur Huawei eNSP</li><li>VPN SSL pour Accès Distant Sécurisé</li><li>Agrégation de Liens (Eth-Trunk/LACP)</li><li>Routage Statique/Dynamique, NAT, ACLs</li>",
+                viewProjectReport: "Voir le Rapport du Projet",
+                k8sTitle: "Série de Laboratoires Pratiques sur Kubernetes",
+                k8sMeta: "Travaux de Laboratoire Académiques & Personnels",
+                k8sDesc: "Une série de laboratoires pratiques axés sur l'acquisition de compétences Kubernetes fondamentales et avancées. Ce travail démontre la capacité de gérer l'intégralité du cycle de vie d'une application conteneurisée, de la configuration du cluster local au déploiement, au réseau et à la persistance des données.",
+                labsCovered: "Laboratoires Couverts",
+                k8sLabs: "<li>Installation et gestion de cluster K3d</li><li>Pods, Déploiements & Mise à l'échelle</li><li>Exposition des Services (ClusterIP, NodePort)</li><li>Ingress pour le routage L7</li><li>Données Persistantes avec des Volumes</li>",
+                viewLabReports: "Voir les Rapports de Lab",
+                contactTitle: "Contactez-moi",
+                contactIntro: "Je suis actuellement à la recherche de nouvelles opportunités et ouvert à la collaboration. Que vous ayez une question ou que vous souhaitiez simplement échanger, n'hésitez pas à me contacter. Je ferai de mon mieux pour vous répondre !",
+                contactButton: "Dites Bonjour",
+                footerText: "Conçu & Réalisé par Youssef Ben Ghorbel",
+            }
+        };
 
-  <section>
-    <h2>Flagship Project: IaaS Automation Platform</h2>
-    <p><strong>Title:</strong> Deployment of a Dynamic Resource Allocation Solution with Proxmox and Odoo</p>
-    <p><strong>Organization:</strong> MAG Security, Tunis, Tunisia</p>
-    <p><strong>Duration:</strong> Feb 2025 – Jun 2025</p>
+        const langEnBtn = document.getElementById('lang-en-btn');
+        const langFrBtn = document.getElementById('lang-fr-btn');
+        const translatableElements = document.querySelectorAll('[data-translate]');
+        
+        const setLanguage = (lang) => {
+            translatableElements.forEach(el => {
+                const key = el.dataset.translate;
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+            document.documentElement.lang = lang;
+            localStorage.setItem('portfolioLanguage', lang);
 
-    <h3>Context & Problem</h3>
-    <ul>
-      <li>Manual VM provisioning was slow and error-prone</li>
-      <li>No customer self-service portal</li>
-      <li>Lack of scalability and automation</li>
-    </ul>
+            if (lang === 'fr') {
+                langFrBtn.classList.add('active');
+                langEnBtn.classList.remove('active');
+            } else {
+                langEnBtn.classList.add('active');
+                langFrBtn.classList.remove('active');
+            }
+        };
 
-    <h3>Solution</h3>
-    <ul>
-      <li>Odoo ERP as a customer portal and orchestration layer</li>
-      <li>Proxmox VE for virtualization</li>
-      <li>Terraform + Ansible + Cloud-Init for automated provisioning</li>
-      <li>Prometheus + Grafana + Alertmanager for monitoring</li>
-      <li>Proxmox Backup Server for backups & disaster recovery</li>
-    </ul>
+        langEnBtn.addEventListener('click', () => setLanguage('en'));
+        langFrBtn.addEventListener('click', () => setLanguage('fr'));
+        
+        // Load saved language or default to English
+        const savedLang = localStorage.getItem('portfolioLanguage') || 'en';
+        setLanguage(savedLang);
 
-    <h3>Methodology</h3>
-    <p>Agile Scrum with 5 sprints covering MVP, network isolation, IaC orchestration, monitoring, and backup.</p>
+        // Mobile nav toggle
+        const navToggle = document.querySelector('.mobile-nav-toggle');
+        const navRight = document.querySelector('.nav-right');
 
-    <h3>Key Achievements</h3>
-    <ul>
-      <li>Built a fully automated provisioning pipeline</li>
-      <li>Delivered secure multi-tenant environments</li>
-      <li>Ensured resilience with monitoring and backups</li>
-      <li>Produced UML diagrams and full technical documentation</li>
-    </ul>
-  </section>
+        navToggle.addEventListener('click', () => {
+            navRight.classList.toggle('active');
+            const icon = navToggle.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
 
-  <section>
-    <h2>Other Experiences</h2>
-    <ul>
-      <li><strong>Freelance DevOps Consultant (2024–2025):</strong> Mailcow deployment, MongoDB Replica Sets, monitoring with Prometheus & ELK.</li>
-      <li><strong>Summer Intern, TMI (2024):</strong> Huawei networking, Access Points deployment.</li>
-      <li><strong>IT Intern, Aziza (2024):</strong> Windows Server roles, Zebra printers, store IT support.</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>Education & Certifications</h2>
-    <ul>
-      <li>Bachelor’s in IT (Network & Systems Administration), ISET Radès (2022–2025)</li>
-      <li>Cisco Certified Network Associate (CCNA)</li>
-      <li>AWS Academy Graduate – Cloud Foundations</li>
-      <li>OPSWAT Introduction to Critical Infrastructure Protection (ICIP)</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>Languages</h2>
-    <ul>
-      <li>Arabic – Native</li>
-      <li>French – Fluent</li>
-      <li>English – Professional Proficiency</li>
-    </ul>
-  </section>
-
-  <div class="contact">
-    <p>📧 <a href="mailto:bgyoussef99@gmail.com">bgyoussef99@gmail.com</a> | 📱 +216 29 832 636</p>
-    <p>🔗 <a href="https://www.linkedin.com/in/youssef-benghorbel" target="_blank">LinkedIn</a></p>
-  </div>
-
+        // Hide header on scroll down
+        let lastScrollTop = 0;
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (scrollTop > lastScrollTop && scrollTop > header.offsetHeight) {
+                header.style.top = '-100px';
+            } else {
+                header.style.top = '0';
+            }
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; 
+        }, false);
+    });
+  </script>
 </body>
 </html>
-	
