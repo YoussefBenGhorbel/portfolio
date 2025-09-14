@@ -1,0 +1,14 @@
+
+---
+
+## **4. .gitignore**
+(Optional, but good practice if later you add assets)
+
+```gitignore
+# OS files
+.DS_Store
+Thumbs.db
+
+# Node / build tools (if added later)
+node_modules/
+dist/
